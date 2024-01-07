@@ -1,0 +1,1 @@
+window.location.href = './bin/www'
