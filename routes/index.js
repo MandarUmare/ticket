@@ -76,9 +76,5 @@ function isLoggedIn(req,res,next){
   res.redirect("/");
 }
 
-connectDB().then(()=>{
-  router.listen(PORT,()=>{
-    console.log(`listening on port ${PORT}`);
-  })
-})
+
 module.exports = router;
