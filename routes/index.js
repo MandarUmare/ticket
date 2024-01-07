@@ -4,11 +4,23 @@ const userModel = require('./users');
 const { model, default: mongoose } = require('mongoose');
 
 const passport = require('passport');
-
+require('dotenv').config();
 const { route } = require('../app');
 const localStrategy=require("passport-local").Strategy;
 passport.use(new localStrategy(userModel.authenticate()));
 
+
+mongoose.set('strictQuery',false);
+const connectDB=async ()=>{
+  try{
+  const conn=await mongoose.connect(process.env.MONGO_URI);
+  console.log(`MongoDB connected : ${conn.connection.host}`);
+  }catch(error)
+  {
+  console.log(error);
+  process.exit(1);
+  }
+}
 
 
 /* GET home page. */
@@ -63,4 +75,10 @@ function isLoggedIn(req,res,next){
   }
   res.redirect("/");
 }
+
+connectDB().then(()=>{
+  router.listen(PORT,()=>{
+    console.log(`listening on port ${PORT}`);
+  })
+})
 module.exports = router;
