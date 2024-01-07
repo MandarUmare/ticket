@@ -2,8 +2,8 @@ var express = require('express');
 const mongoose=require("mongoose");
 const plm=require("passport-local-mongoose");
 
-
-mongoose.connect("mongodb+srv://mandarumare2003:Mandar123@cluster0.oavp6ko.mongodb.net/Lokesh?retryWrites=true&w=majority");
+require('dotenv').config();
+mongoose.connect(process.env.MONGO_URI);
 
 
 const userschema=mongoose.Schema({
