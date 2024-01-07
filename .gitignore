@@ -7,4 +7,5 @@ node_modules/
 # Ignore log files
 *.log
 
+
 # Add other files/directories to ignore as needed
