@@ -1,1 +1,5 @@
-window.location.href = './bin/www'
+
+
+window.onload(function(){
+    window.re
+})
